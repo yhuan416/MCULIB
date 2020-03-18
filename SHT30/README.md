@@ -1,5 +1,5 @@
 **2019.10.27**  
-**Author : [YHUAN](https://github.com/yhuan416)**  
+**Author : [YHUAN416](https://github.com/yhuan416)**  
 **SHT30温湿度传感器简易驱动ss**
 
 # 功能介绍

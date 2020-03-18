@@ -1,5 +1,5 @@
 **2020.3.18**  
-**Author : [YHUAN](https://github.com/yhuan416)**  
+**Author : [YHUAN416](https://github.com/yhuan416)**  
 **软件IIC**
 
 # 功能介绍
@@ -54,12 +54,7 @@ return :
 ```
 
 # 移植说明
-1. 在soft_iic.h中添加顶层头文件  
-```
-#include "sys.h"
-```
-2. 修改soft_iic.c中的相关宏定义
-
+修改相关宏定义
 ```
 /* 移植相关配置 */
 //延时配置
@@ -86,4 +81,21 @@ return :
 #define IIC_SDA_OUTPUT()	IIC_SDA_PIN_MODE(GPIO_Mode_OUT)
 /* 移植相关配置 */
 ```
-
+修改初始化函数
+```
+void SOFTIIC_Init(void)
+{
+	/* 初始化对应的引脚 */
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);//使能时钟
+	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);//初始化引脚
+	/* 初始化对应的引脚 */
+	
+	...
+}
+```
