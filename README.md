@@ -3,7 +3,7 @@
 **SOME USEFUL MCU LIB**
 
 # 目录说明
-protocol : 通信接口协议
+protocol : 通信接口协议  
 component : 组件/设备驱动
 
 # 当前已有的库
