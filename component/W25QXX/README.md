@@ -2,6 +2,8 @@
 **Author : [YHUAN](https://github.com/yhuan416)**  
 **SPI FLASH**
 
+*根据开源代码修改*
+
 # 功能介绍
 通过SPI操作SPI FLASH(W25QXX)
 
