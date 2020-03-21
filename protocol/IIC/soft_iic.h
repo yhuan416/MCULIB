@@ -4,12 +4,6 @@
 //顶层头文件,include "stm32f4xx.h"
 #include "sys.h"
 
-//用于传输数据时,是否需要应答或者,是否发送应答
-enum{
-	SOFTIIC_TRUE = 1,
-	SOFTIIC_FALSE = 0
-};
-
 //读写操作
 enum{
 	IIC_WR_BIT = 0,

@@ -219,7 +219,7 @@ void W25QXX_Write(uint8_t* pBuffer,uint32_t WriteAddr,uint16_t NumByteToWrite)
 	secoff=WriteAddr%4096;//在扇区内的偏移
 	secremain=4096-secoff;//扇区剩余空间大小   
 	//DEBUG("ad:%X,nb:%X\r\n",WriteAddr,NumByteToWrite);//测试用
-	if(NumByteToWrite<=secremain) secremain=NumByteToWrite;//不大于4096个字节
+	if(NumByteToWrite<=secremain)secremain=NumByteToWrite;//不大于4096个字节
 	while(1) 
 	{	
 		W25QXX_Read(W25QXX_BUF,secpos*4096,4096);//读出整个扇区的内容

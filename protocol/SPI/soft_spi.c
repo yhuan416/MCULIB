@@ -3,7 +3,7 @@ AUTHOR : YHUAN416
 软件SPI
 
 V1.0 2020.3.18
-注意,当前版本只有SPI3模式已通过测试
+注意,当前版本只有SPI3模式已测试,保证可以使用
 
 */
 #include "soft_spi.h"

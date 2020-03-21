@@ -3,6 +3,8 @@
 
 #include "sys.h"
 
+#define SHT30_CRC8_CHECK	(1)
+
 //温湿度数据
 typedef struct 
 {
