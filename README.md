@@ -11,6 +11,7 @@ component : 组件/设备驱动
 2. SHT30
 3. 软件SPI
 4. W25QXX
+5. WT2605B01
 ...
 
 
