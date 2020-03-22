@@ -17,5 +17,6 @@ component :
 2. W25QXX  
 3. WT2605B01  
 4. NMEA0183  
+5. FIFO  
 ...
 
