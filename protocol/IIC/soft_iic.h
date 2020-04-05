@@ -2,13 +2,19 @@
 #define _SOFT_IIC_H_
 
 //顶层头文件,include "stm32f4xx.h"
-#include "sys.h"
+//#include "sys.h"
 
 //读写操作
 enum{
 	IIC_WR_BIT = 0,
 	IIC_RD_BIT = 1
 };
+
+//IIC返回值
+typedef enum{
+	IIC_NO_ERR = 0,			/* 没有错误 */
+	IIC_NO_ACK,				/* 无应答错误 */
+} iicErr;
 
 //初始化
 extern void SOFTIIC_Init(void);
@@ -26,7 +32,7 @@ extern void SOFTIIC_Stop(void);
 	0 : 发送成功,如果需要等待应答则成功收到应答位
 	1 : 未收到应答位
 */
-extern uint8_t SOFTIIC_Send_Byte(uint8_t data, uint8_t wait_ack);
+extern iicErr SOFTIIC_Send_Byte(uint8_t data, uint8_t ack);
 
 /*
 读取一个字节
@@ -35,6 +41,6 @@ extern uint8_t SOFTIIC_Send_Byte(uint8_t data, uint8_t wait_ack);
 返回值 : 
 	读取到的字节
 */
-extern uint8_t SOFTIIC_Recv_Byte(uint8_t ack);
+extern iicErr SOFTIIC_Recv_Byte(uint8_t *data, uint8_t ack);
 
 #endif

@@ -149,13 +149,13 @@ static uint8_t SOFTIIC_Wait_Ack(void)
 }
 
 //IIC 写一个字节
-uint8_t SOFTIIC_Send_Byte(uint8_t data, uint8_t wait_ack)
+iicErr SOFTIIC_Send_Byte(uint8_t data, uint8_t ack)
 {
 	uint8_t i;
 
 	IIC_SDA_OUTPUT();//输出模式
 
-	IIC_SCL_L();	
+	IIC_SCL_L();
 	SOFTIIC_DELAY_US(SOFTIIC_DELAY_TICK);
 	
 	for(i = 0; i < 8; i++)
@@ -181,16 +181,16 @@ uint8_t SOFTIIC_Send_Byte(uint8_t data, uint8_t wait_ack)
 	}
 
 	/* 需要应答信号且对方没有产生应答信号 */
-	if(wait_ack && SOFTIIC_Wait_Ack())
+	if(ack && SOFTIIC_Wait_Ack())
 	{
-		return 1;//有错误
+		return IIC_NO_ACK;//有错误
 	}
 	
-	return 0;
+	return IIC_NO_ERR;
 }
 
 //IIC 读一个字节
-uint8_t SOFTIIC_Recv_Byte(uint8_t ack)
+iicErr SOFTIIC_Recv_Byte(uint8_t *data, uint8_t ack)
 {
 	uint8_t i, ret;
 
@@ -212,16 +212,18 @@ uint8_t SOFTIIC_Recv_Byte(uint8_t ack)
 		IIC_SCL_L();
 		SOFTIIC_DELAY_US(SOFTIIC_DELAY_TICK);
 	}
-	
+
 	/* 是否发出应答 */
 	if(ack)
 	{
-		SOFTIIC_Ack();
+		SOFTIIC_Ack();//发出应答
 	}
 	else
 	{
-		SOFTIIC_nAck();
+		SOFTIIC_nAck();//非应答
 	}
+
+	*data = ret;//保存读取到的字节数据
 	
-	return ret;
+	return IIC_NO_ERR;
 }
