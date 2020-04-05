@@ -18,5 +18,6 @@ component :
 3. WT2605B01  
 4. NMEA0183  
 5. FIFO  
+6. SHT3X  
 ...
 
